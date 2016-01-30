@@ -21,15 +21,15 @@ The example of the USD.
 
 Conversion from cents to dollars with currency symbol 
 ```
-Yii::$app->priceFormatter->toView(30090); // Result: (string) $300.90
+Yii::$app->get('priceFormatter')->toView(30090); // Result: (string) $300.90
 ```  
 Conversion from cents to dollars without currency symbol
 ```
-Yii::$app->priceFormatter->toEdit(30090); // Result: (float) 300.90
+Yii::$app->get('priceFormatter')->toEdit(30090); // Result: (float) 300.90
 ```  
 Conversion from dollars to cents
 ```
-Yii::$app->priceFormatter->toStore(300.90); // Result: (int) 30090
+Yii::$app->get('priceFormatter')->toStore(300.90); // Result: (int) 30090
 ```
 
 Installation
