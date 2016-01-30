@@ -1,0 +1,34 @@
+{
+  "name": "voskobovich/yii2-price-formatter",
+  "description": "Component for converting price for Yii2",
+  "keywords": [
+    "price",
+    "component",
+    "formatter",
+    "currency",
+    "yii2"
+  ],
+  "homepage": "https://github.com/voskobovich/yii2-price-formatter",
+  "type": "yii2-widget",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/voskobovich/yii2-price-formatter/issues",
+    "source": "https://github.com/voskobovich/yii2-price-formatter"
+  },
+  "authors": [
+    {
+      "name": "Vitaly Voskobovich",
+      "email": "vitaly@voskobovich.com",
+      "homepage": "http://voskobovich.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "voskobovich\\price\\components\\": "src"
+    }
+  }
+}
