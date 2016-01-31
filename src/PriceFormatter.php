@@ -16,6 +16,7 @@ class PriceFormatter extends Component
      * Currency code
      * Must be return the 3-letter ISO 4217 currency code indicating the currency to use.
      * If null, [[currencyCode]] will be used.
+     * See http://www.yiiframework.com/doc-2.0/yii-i18n-formatter.html#$currencyCode-detail
      * @var null|string|callable
      */
     public $currencyCode = null;
@@ -23,6 +24,7 @@ class PriceFormatter extends Component
     /**
      * Configuration for the number formatter.
      * This parameter will be merged with [[numberFormatterOptions]].
+     * See http://www.yiiframework.com/doc-2.0/yii-i18n-formatter.html#asCurrency()-detail
      * @var array
      */
     public $options = [];
@@ -30,6 +32,7 @@ class PriceFormatter extends Component
     /**
      * Configuration for the number formatter.
      * This parameter will be merged with [[numberFormatterTextOptions]].
+     * See http://www.yiiframework.com/doc-2.0/yii-i18n-formatter.html#asCurrency()-detail
      * @var array
      */
     public $textOptions = [];
