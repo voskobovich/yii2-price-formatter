@@ -108,7 +108,7 @@ class PriceFormatter extends Component
     }
 
     /**
-     * Converts 399 cents => $3.99
+     * Converts 399 cents => $3,99
      * @param $value
      * @param array $options
      * @param array $textOptions

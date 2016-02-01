@@ -19,18 +19,36 @@ See example
 
 The example of the USD.
 
-Conversion from cents to dollars with currency symbol 
+Converts 3.99 dollars => 399 cents
 ```
-Yii::$app->get('priceFormatter')->toView(30090); // Result: (string) $300.90
+Yii::$app->get('priceFormatter')->toStore(3.99); // input float
+Yii::$app->get('priceFormatter')->toStore('3,99'); // input string
+// Result: 399
 ```  
-Conversion from cents to dollars without currency symbol
+Converts 3 dollars 99 cents => 399 cents
 ```
-Yii::$app->get('priceFormatter')->toEdit(30090); // Result: (float) 300.90
+Yii::$app->get('priceFormatter')->toStoreByParts(3, 99);
+// Result: 399
 ```  
-Conversion from dollars to cents
+Converts 399 cents => 3.99 dollars
 ```
-Yii::$app->get('priceFormatter')->toStore(300.90); // Result: (int) 30090
+Yii::$app->get('priceFormatter')->toEdit(399);
+// Result: 3.99
+```  
+Converts 399 cents => 3 dollars, 99 cents
 ```
+Yii::$app->get('priceFormatter')->toEditByParts(399);
+// Result array:
+[
+    0 => 3,
+    1 => 99
+]
+```  
+Converts 399 cents => $3.99 (with currency symbol )
+```
+Yii::$app->get('priceFormatter')->toView(399);
+// Result: $3,99
+```  
 
 Installation
 ---
