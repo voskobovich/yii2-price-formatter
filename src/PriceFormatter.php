@@ -55,7 +55,8 @@ class PriceFormatter extends Component
     }
 
     /**
-     * @param $value
+     * Converts 3.99 dollars => 399 cents
+     * @param float $value
      * @return float
      */
     public function toStore($value)
@@ -64,20 +65,50 @@ class PriceFormatter extends Component
         $value = preg_replace('/\s+/', '', $value);
         $value = preg_replace('/\x{00a0}/siu', '', $value);
 
-        return round($value * 100, 0);
+        return intval($value) * 100;
     }
 
     /**
+     * Converts 3 dollars 99 cents => 399 cents
+     * @param integer $integer
+     * @param integer $fraction
+     * @return integer
+     */
+    public function toStoreByParts($integer, $fraction)
+    {
+        return (intval($integer) * 100) + intval($fraction);
+    }
+
+    /**
+     * Converts 399 cents => 3.99 dollars
      * @param $value
      * @return string
      * @throws \yii\base\InvalidConfigException
      */
     public function toEdit($value)
     {
-        return $value / 100;
+        return intval($value) / 100;
     }
 
     /**
+     * Converts 399 cents => 3 dollars, 99 cents
+     * @param integer $value
+     * @return array
+     */
+    public function toEditByParts($value)
+    {
+        $value = $this->toEdit($value);
+
+        $fraction = 0;
+        if (($pos = strpos($value, '.')) !== false) {
+            $fraction = substr($value, $pos + 1);
+        }
+
+        return [floor($value), intval($fraction)];
+    }
+
+    /**
+     * Converts 399 cents => $3.99
      * @param $value
      * @param array $options
      * @param array $textOptions
@@ -94,6 +125,11 @@ class PriceFormatter extends Component
             $textOptions = $this->textOptions;
         }
 
-        return Yii::$app->formatter->asCurrency($this->toEdit($value), $this->currencyCode(), $options, $textOptions);
+        return Yii::$app->formatter->asCurrency(
+            $this->toEdit($value),
+            $this->currencyCode(),
+            $options,
+            $textOptions
+        );
     }
 }
