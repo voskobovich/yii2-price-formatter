@@ -65,7 +65,7 @@ class PriceFormatter extends Component
         $value = preg_replace('/\s+/', '', $value);
         $value = preg_replace('/\x{00a0}/siu', '', $value);
 
-        return intval($value) * 100;
+        return floatval($value) * 100;
     }
 
     /**
