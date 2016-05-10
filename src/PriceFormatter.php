@@ -56,8 +56,8 @@ class PriceFormatter extends Component
 
     /**
      * Converts 3.99 dollars => 399 cents
-     * @param float $value
-     * @return float
+     * @param float|string $value
+     * @return int
      */
     public function toStore($value)
     {
@@ -65,7 +65,7 @@ class PriceFormatter extends Component
         $value = preg_replace('/\s+/', '', $value);
         $value = preg_replace('/\x{00a0}/siu', '', $value);
 
-        return floatval($value) * 100;
+        return (int)round((float)$value * 100);
     }
 
     /**
@@ -76,7 +76,7 @@ class PriceFormatter extends Component
      */
     public function toStoreByParts($integer, $fraction)
     {
-        return (intval($integer) * 100) + intval($fraction);
+        return ((int)$integer * 100) + (int)$fraction;
     }
 
     /**
@@ -87,7 +87,7 @@ class PriceFormatter extends Component
      */
     public function toEdit($value)
     {
-        return $value / 100;
+        return (int)$value / 100;
     }
 
     /**
@@ -104,7 +104,7 @@ class PriceFormatter extends Component
             $fraction = substr($value, $pos + 1);
         }
 
-        return [floor($value), intval($fraction)];
+        return [floor($value), $fraction];
     }
 
     /**
