@@ -87,7 +87,7 @@ class PriceFormatter extends Component
      */
     public function toEdit($value)
     {
-        return intval($value) / 100;
+        return $value / 100;
     }
 
     /**
